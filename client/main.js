@@ -35,7 +35,32 @@ const getJoke = () => {
     });
 };
 
+const addAdvice = () => {
+    const newAdvice = document.getElementById("newAdvice").value;
+    axios.post("http://localhost:4000/api/advice", { advice: newAdvice })
+        .then(res => {
+            alert(res.data);
+        })
+        .catch(error => {
+            alert(error.response.data);
+        });
+};
+
+const addFortune = () => {
+    const newFortune = document.getElementById("newFortune").value;
+    axios.post("http://localhost:4000/api/fortune", { fortune: newFortune })
+        .then(res => {
+            alert(res.data);
+        })
+        .catch(error => {
+            alert(error.response.data);
+        });
+};
+
 complimentBtn.addEventListener('click', getCompliment);
 fortuneBtn.addEventListener('click', getFortune);
 adviceBtn.addEventListener('click', getAdvice);
 jokeBtn.addEventListener('click', getJoke);
+
+document.getElementById("addAdviceButton").addEventListener("click", addAdvice);
+document.getElementById("addFortuneButton").addEventListener("click", addFortune);
